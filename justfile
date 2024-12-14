@@ -1,5 +1,5 @@
-name := 'cosmic-app-template'
-appid := 'com.example.CosmicAppTemplate'
+name := 'dispatch'
+appid := 'com.maxrdz.Dispatch'
 
 rootdir := ''
 prefix := '/usr'

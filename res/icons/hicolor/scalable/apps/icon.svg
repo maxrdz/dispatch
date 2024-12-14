@@ -1,2 +1,62 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="127.99999"
+   height="127.99999"
+   viewBox="0 0 33.866664 33.866664"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="icon.svg"
+   inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="2.4638253"
+     inkscape:cx="78.739348"
+     inkscape:cy="72.245381"
+     inkscape:window-width="1239"
+     inkscape:window-height="761"
+     inkscape:window-x="26"
+     inkscape:window-y="23"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg1" />
+  <defs
+     id="defs1" />
+  <g
+     id="layer1"
+     style="fill:#00d046;fill-opacity:1">
+    <g
+       fill="#222222"
+       id="g4"
+       transform="scale(2.1167094)"
+       style="fill:#00d046;fill-opacity:1">
+      <path
+         d="M 14,3.175781 V 7 c 0,2.179688 -1.820312,4 -4,4 H 6.414062 l -2,2 H 10 l 3,3 v -3 c 1.644531,0 3,-1.355469 3,-3 V 6 C 16,4.707031 15.160156,3.59375 14,3.175781 Z m 0,0"
+         id="path1"
+         style="fill:#00d046;fill-opacity:1" />
+      <path
+         d="M 3,0 C 1.355469,0 0,1.355469 0,3 v 4 c 0,1.644531 1.355469,3 3,3 v 3 l 3,-3 h 4 c 1.644531,0 3,-1.355469 3,-3 V 3 C 13,1.355469 11.644531,0 10,0 Z m 0,2 h 7 c 0.570312,0 1,0.429688 1,1 v 4 c 0,0.570312 -0.429688,1 -1,1 H 3 C 2.429688,8 2,7.570312 2,7 V 3 C 2,2.429688 2.429688,2 3,2 Z m 0,0"
+         id="path2"
+         style="fill:#00d046;fill-opacity:1" />
+      <path
+         d="m 3,3 h 7 V 4 H 3 Z m 0,0"
+         id="path3"
+         style="fill:#00d046;fill-opacity:1" />
+      <path
+         d="M 3,5 H 7 V 6 H 3 Z m 0,0"
+         id="path4"
+         style="fill:#00d046;fill-opacity:1" />
+    </g>
+  </g>
+</svg>

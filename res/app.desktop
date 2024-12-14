@@ -1,10 +1,10 @@
 [Desktop Entry]
-Name={{APP_NAME}}
-Exec={{APP_BINARY}} %F
+Name=Dispatch
+Exec=dispatch %F
 Terminal=false
 Type=Application
 StartupNotify=true
-Icon={{APP_ID}}
+Icon=com.maxrdz.Dispatch
 Categories=COSMIC;
 Keywords=
 MimeType=

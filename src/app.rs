@@ -1,4 +1,21 @@
-// SPDX-License-Identifier: {{LICENSE}}
+/*
+    This file is part of Dispatch.
+
+    Copyright (c) 2024 Max Rodriguez <me@maxrdz.com>
+
+    Dispatch is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Dispatch is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*/
 
 use crate::config::Config;
 use crate::fl;
@@ -11,7 +28,8 @@ use cosmic::{cosmic_theme, theme, Application, ApplicationExt, Apply, Element};
 use futures_util::SinkExt;
 use std::collections::HashMap;
 
-const REPOSITORY: &str = "https://github.com/pop-os/cosmic-app-template";
+const VERSION: &str = env!("CARGO_PKG_VERSION");
+const REPOSITORY: &str = env!("CARGO_PKG_REPOSITORY");
 const APP_ICON: &[u8] = include_bytes!("../res/icons/hicolor/scalable/apps/icon.svg");
 
 /// The application model stores app-specific state used to describe its interface and
@@ -50,7 +68,7 @@ impl Application for AppModel {
     type Message = Message;
 
     /// Unique identifier in RDNN (reverse domain name notation) format.
-    const APP_ID: &'static str = "com.example.CosmicAppTemplate";
+    const APP_ID: &'static str = "com.maxrdz.Dispatch";
 
     fn core(&self) -> &Core {
         &self.core
@@ -236,6 +254,8 @@ impl AppModel {
 
         let title = widget::text::title3(fl!("app-title"));
 
+        let version = widget::text::title4(VERSION);
+
         let link = widget::button::link(REPOSITORY)
             .on_press(Message::OpenRepositoryUrl)
             .padding(0);
@@ -243,6 +263,7 @@ impl AppModel {
         widget::column()
             .push(icon)
             .push(title)
+            .push(version)
             .push(link)
             .align_x(Alignment::Center)
             .spacing(space_xxs)
