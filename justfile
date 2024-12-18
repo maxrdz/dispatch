@@ -40,6 +40,13 @@ build-debug *args:
 # Compiles with release profile
 build-release *args: (build-debug '--release' args)
 
+# Cross compile with cross-rs (debug)
+cross-debug *args:
+    cross build {{args}}
+
+# Cross compile with cross-rs (release)
+cross-release *args: (cross-debug '--release' args)
+
 # Compiles release profile with vendored dependencies
 build-vendored *args: vendor-extract (build-release '--frozen --offline' args)
 

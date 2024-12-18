@@ -7,6 +7,19 @@ authors = ["Max Rodriguez <me@maxrdz.com>"]
 license-file = "COPYING"
 repository = "https://gitlab.com/maxrdz/dispatch"
 
+[package.metadata.cross.build]
+default-target = "aarch64-unknown-linux-gnu"
+
+[package.metadata.cross.target.aarch64-unknown-linux-gnu]
+image.name = "ubuntu:24.04"
+image.toolchain = ["aarch64-unknown-linux-gnu"]
+pre-build = [
+    "apt-get update",
+    "apt-get install --assume-yes git llvm clang pkg-config gcc g++",
+    "apt-get download libclang-dev libxkbcommon0 libxkbcommon-dev modemmanager-dev",
+    "dpkg --force-all -i *.deb",
+]
+
 [build-dependencies]
 vergen = { version = "8", features = ["git", "gitcl"] }
 
