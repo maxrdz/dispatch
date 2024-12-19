@@ -1,6 +1,4 @@
 .cargo/
-*.pdb
-**/*.rs.bk
 debug/
 target/
 vendor/
@@ -12,3 +10,14 @@ debian/*
 !debian/install
 !debian/rules
 !debian/source
+.flatpak/
+vendor
+**/.flatpak-builder
+flatpak_out/
+flatpak_repo/
+*.flatpak
+**/*.rs.bk
+*.pdb
+.vscode/
+*.git
+*.syscap
