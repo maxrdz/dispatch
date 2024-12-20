@@ -27,6 +27,8 @@ cargo_opts += [ '--color=always' ]
 cargo_env = environment()
 cargo_env.set('CARGO_HOME', meson.project_build_root() / 'cargo-home')
 
+target_dir = 'target' / rust_target
+
 if get_option('profile') == 'release'
   cargo_opts += [ '--release' ]
   rust_target = 'release'
@@ -48,6 +50,8 @@ endif
 
 if get_option('target') != ''
   cargo_opts += [ '--target', get_option('target') ]
+
+  target_dir = 'target' / get_option('target') / rust_target
 
   # For cross compiling, we use the cross-rs
   # project for building our application via Docker.
@@ -111,7 +115,7 @@ custom_target(
   install: true,
   install_dir: get_option('bindir'),
   command: [
-    'cp', 'target' / rust_target / base_binary, '@BUILD_ROOT@' / binary,
+    'cp', target_dir / base_binary, '@BUILD_ROOT@' / binary,
   ],
   depends: cargo_build
 )
