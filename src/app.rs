@@ -30,7 +30,14 @@ use std::collections::HashMap;
 
 const VERSION: &str = env!("CARGO_PKG_VERSION");
 const REPOSITORY: &str = env!("CARGO_PKG_REPOSITORY");
-const APP_ICON: &[u8] = include_bytes!("../res/icons/hicolor/scalable/apps/icon.svg");
+
+cfg_if::cfg_if! {
+    if #[cfg(debug_assertions)] {
+        const APP_ICON: &[u8] = include_bytes!("../res/icons/hicolor/scalable/apps/icon-debug.svg");
+    } else {
+        const APP_ICON: &[u8] = include_bytes!("../res/icons/hicolor/scalable/apps/icon.svg");
+    }
+}
 
 /// The application model stores app-specific state used to describe its interface and
 /// drive its logic.
@@ -152,11 +159,10 @@ impl Application for AppModel {
         }
 
         Some(match self.context_page {
-            ContextPage::About => context_drawer::context_drawer(
-                self.about(),
-                Message::ToggleContextPage(ContextPage::About),
-            )
-            .title(fl!("about")),
+            ContextPage::About => {
+                context_drawer::context_drawer(self.about(), Message::ToggleContextPage(ContextPage::About))
+                    .title(fl!("about"))
+            }
         })
     }
 
@@ -193,15 +199,13 @@ impl Application for AppModel {
                 }),
             ),
             // Watch for application configuration changes.
-            self.core()
-                .watch_config::<Config>(Self::APP_ID)
-                .map(|update| {
-                    // for why in update.errors {
-                    //     tracing::error!(?why, "app config error");
-                    // }
+            self.core().watch_config::<Config>(Self::APP_ID).map(|update| {
+                // for why in update.errors {
+                //     tracing::error!(?why, "app config error");
+                // }
 
-                    Message::UpdateConfig(update.config)
-                }),
+                Message::UpdateConfig(update.config)
+            }),
         ])
     }
 
@@ -278,13 +282,9 @@ impl AppModel {
             .push(version)
             .push(link)
             .push(
-                widget::button::link(fl!(
-                    "git-description",
-                    hash = short_hash.as_str(),
-                    date = date
-                ))
-                .on_press(Message::LaunchUrl(format!("{REPOSITORY}/commits/{hash}")))
-                .padding(0),
+                widget::button::link(fl!("git-description", hash = short_hash.as_str(), date = date))
+                    .on_press(Message::LaunchUrl(format!("{REPOSITORY}/commits/{hash}")))
+                    .padding(0),
             )
             .align_x(Alignment::Center)
             .spacing(space_xxs)

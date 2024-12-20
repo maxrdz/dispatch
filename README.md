@@ -4,17 +4,18 @@ A graphical application for sending SMS/MMS messages, built with libcosmic
 for the COSMIC desktop environment, and in the future, the COSMIC mobile
 shell.
 
-A **justfile** is included by default with common recipes used by other
-COSMIC projects.
+## Building
 
-- `just` builds the application with the default `just build-release` recipe
-- `just run` builds and runs the application
-- `just install` installs the project into the system
-- `just vendor` creates a vendored tarball
-- `just build-vendored` compiles with vendored dependencies from that tarball
-- `just check` runs clippy on the project to check for linter warnings
-- `just check-json` can be used by IDEs that support LSP
+To build Dispatch, run:
 
+    meson setup build -Dprofile=debug
+    meson compile -C build
+
+## Installing
+
+To install a build of Dispatch, run:
+
+    meson install -C build
 
 ## Cross Compiling
 
@@ -26,11 +27,7 @@ The cross project is in a weird state where it doesn't have much motivation
 and/or time to cut a release, so you need to pull from the main branch to
 get a lot of bug fixes since the 'latest' release as of December 2024.
 
-Cross compilation is weird.
+Then, you can run:
 
-We emulate arm64 within a Docker container.
-
-Install:
-
-    docker run --privileged --rm tonistiigi/binfmt --install arm64
-
+    meson setup build -Dtarget=aarch64-unknown-linux-gnu
+    meson compile -C build

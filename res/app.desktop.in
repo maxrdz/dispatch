@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Dispatch
+Exec=@BINARY@
+Comment=Send SMS/MMS messages
+Icon=@APP_ID@
+Categories=COSMIC;Chat;InstantMessaging;
+Keywords=sms;chat;dispatch;
+Terminal=false
+Type=Application
+SingleMainWindow=true
+StartupNotify=true
+X-Phosh-UsesFeedback=true
+X-Purism-FormFactor=Workstation;Mobile;
