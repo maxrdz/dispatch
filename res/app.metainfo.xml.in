@@ -28,8 +28,6 @@
   <url type="bugtracker">@PROJECT_GIT@/-/issues</url>
   <url type="donation">https://github.com/sponsors/maxrdz</url>
   <url type="contribute">@PROJECT_GIT@/-/blob/master/CONTRIBUTING.md</url>
-  <!--<url type="translate"></url>-->
-  <!--<translation type="gettext" source_locale="en_US">@GETTEXT_DOMAIN@</translation>-->
   <launchable type="desktop-id">@APP_ID@.desktop</launchable>
   <provides>
     <id>@APP_ID@</id>

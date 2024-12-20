@@ -29,7 +29,7 @@ if desktop_file_validate.found()
     'validate-desktop',
     desktop_file_validate,
     args: [
-      desktop_file.full_path()
+      desktop_file
     ],
   )
 endif
@@ -48,7 +48,7 @@ if appstream_util.found()
   test(
     'validate-appdata', appstream_util,
     args: [
-      'validate', '--nonet', appdata_file.full_path()
+      'validate', '--nonet', appdata_file
     ],
   )
 endif
@@ -57,7 +57,7 @@ if appstream_cli.found()
   test(
     'validate-appstreamcli', appstream_cli,
     args: [
-      'validate', '--no-color', '--no-net', appdata_file.full_path()
+      'validate', '--no-color', '--no-net', appdata_file
     ],
   )
 endif
