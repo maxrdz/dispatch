@@ -27,8 +27,6 @@ cargo_opts += [ '--color=always' ]
 cargo_env = environment()
 cargo_env.set('CARGO_HOME', meson.project_build_root() / 'cargo-home')
 
-target_dir = 'target' / rust_target
-
 if get_option('profile') == 'release'
   cargo_opts += [ '--release' ]
   rust_target = 'release'
@@ -45,6 +43,8 @@ else
 
   message('Building Dispatch for Debug.')
 endif
+
+target_dir = 'target' / rust_target
 
 # ---------- Cross Compilation ---------- #
 
