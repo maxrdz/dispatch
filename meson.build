@@ -32,6 +32,7 @@ if get_option('profile') == 'release'
   rust_target = 'release'
 
   app_id = base_id
+  binary = base_binary
 
   message('Building Dispatch for Release.')
 else
@@ -82,7 +83,7 @@ podir = meson.project_source_root() / 'i18n'
 
 base_dir = join_paths(rootdir, prefix)
 
-bin_src = meson.project_build_root() / base_binary
+bin_src = meson.project_build_root() / binary
 bin_dst = base_dir / 'bin' / binary
 
 subdir('res')
