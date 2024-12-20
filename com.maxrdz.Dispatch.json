@@ -1,0 +1,112 @@
+{
+    "app-id" : "com.maxrdz.Dispatch",
+    "runtime" : "org.freedesktop.Platform",
+    "runtime-version" : "24.08",
+    "sdk" : "org.freedesktop.Sdk",
+    "sdk-extensions" : [
+        "org.freedesktop.Sdk.Extension.rust-stable",
+	    "org.freedesktop.Sdk.Extension.llvm18"
+    ],
+    "command" : "dispatch",
+    "finish-args" : [
+        "--device=dri",
+        "--socket=wayland",
+        "--socket=fallback-x11",
+        "--socket=pulseaudio",
+        "--share=ipc",
+        "--env=RUST_BACKTRACE=0",
+        "--talk-name=org.sigxcpu.Feedback",
+        "--system-talk-name=org.freedesktop.ModemManager1"
+    ],
+    "build-options" : {
+        "append-path" : "/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm18/bin",
+        "build-args" : [
+            "--share=network"
+        ]
+    },
+    "cleanup" : [
+        "/include",
+        "/lib/pkgconfig",
+        "/lib/cmake",
+        "/man",
+        "/share/doc",
+        "/share/man",
+        "/share/pkgconfig",
+        "*.la",
+        "*.a"
+    ],
+    "modules" : [
+        {
+            "name": "pam",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Ddocs=disabled",
+                "-Dexamples=false"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/linux-pam/linux-pam",
+                    "branch": "v1.7.0",
+                    "commit": "ea980d991196df67cdd56b3f65d210b73218d08a"
+                }
+            ]
+        },
+        {
+            "name": "polkit",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dlibs-only=true",
+                "-Dintrospection=false",
+                "-Dman=false",
+                "-Dgtk_doc=false",
+                "-Dexamples=false",
+                "-Dtests=false"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/polkit-org/polkit",
+                    "branch": "main"
+                }
+            ]
+        },
+        {
+            "name": "ModemManager",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dintrospection=false",
+                "-Dvapi=false",
+                "-Dudevdir=/app/lib",
+                "-Dsystemdsystemunitdir=/app/lib/systemd/system",
+                "-Dmbim=false",
+                "-Dqmi=false",
+                "-Dqrtr=false",
+                "-Dman=false",
+                "-Dgtk_doc=false",
+                "-Dexamples=false",
+                "-Dbash_completion=false"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.freedesktop.org/mobile-broadband/ModemManager",
+                    "tag": "1.22.0",
+                    "commit": "03f786ce66360d67c669f4f122f8aa458e6f01ea"
+                }
+            ]
+        },
+        {
+            "name" : "dispatch",
+            "buildsystem" : "meson",
+            "builddir" : true,
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : ".",
+                    "branch" : "master"
+                }
+            ]
+        }
+    ]
+}
