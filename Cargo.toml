@@ -2,7 +2,7 @@
 name = "dispatch"
 version = "0.1.0"
 edition = "2021"
-rust-version = "1.83"
+rust-version = "1.81"
 authors = ["Max Rodriguez <me@maxrdz.com>"]
 license-file = "COPYING"
 repository = "https://gitlab.com/maxrdz/dispatch"
